@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Upload Example</title>
+    <style>
+      .ok{
+           
+           font-size: 20px;
+       }
+      .op{
+        font-size: 20px;
+        margin-left: -70px;
+        font-weight: bold;
+        background-color: yellow;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
+</head>
+   <body>
+      <h3> List of Uploading Files With a Database in Flask  </h3>
+      <table border = 1>
+         <thead>
+		    <td style="display:none;"<b>Song Id</td>
+            <td><b>Title</td>
+            <td><b>Artist</td>
+            <td><b>Album</td>
+            <td><b>Song</td>
+			<td style="display:none;"<b>Download File</td>
+			<td><b>Download</td>
+			<td><b>Download</td>
+		 </thead>
+         
+         {% for row in rows %}
+            <tr>
+			   <td style="display:none;">{{row["sond_id"]}}</td>
+               <td>{{row["title"]}}</td>
+               <td>{{row["artist"]}}</td>
+               <td>{{row["album"]}}</td>
+			   <td>{{row["song_name"]}}</td>
+			   <td style="display:none;">{{row["song"]}}</td>
+			   <td><a href="{{ url_for('.download_file') }}">Download</a></td>
+			   <td><a href="{{ url_for('loading')    }}/{{row["sond_id"]}}">loading</a></td>
+			   <td><a href="{{row["sond_id"]}}">loading2</a></td>
+			   <!--
+			   <ul>
+				 {% for file in files %}
+				  <li> <a href="{{ url_for('download', filename=file) }}">{{ file }}</a></li>
+				 {% endfor %}
+				</ul>
+				-->
+            </tr>
+         {% endfor %}
+      </table>
+		  <FORM action="{{url_for('track')}}" method="post">
+		<p>
+		<br>
+			<b>Song Name:</b>
+			<input type="text" name="Song_name" value="{{request.form.track}}">
+		    <input type="Submit" name="request" value="Search"><br/>
+		  </p>
+		  <b><H2>{{records}}</H2></b>
+		   
+	</FORM>
+      <a href = "/enternew">Go back to home page</a>
+      
+   </body>
+</html>
