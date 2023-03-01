@@ -1,6 +1,8 @@
 Install Flask, SQLite in Windows OS
-pip install Flask
-install package  ##install all packages
+
+a.  pip install Flask
+
+b.  install package  ##install all packages
 
 1. Create Database in SQLite with 'TableSong.py'.
 2. Create 'Uplaod' Folder in preferred location and put
